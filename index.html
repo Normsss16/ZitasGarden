@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zita's Garden | Siargao Island</title>
+    <style>
+        /* --- CSS STYLES --- */
+        
+        /* 1. Reset & Variables */
+        :root {
+            --primary-green: #2E5945; /* Dark lush green */
+            --accent-gold: #D4AF37;   /* Sand/Gold tone */
+            --light-bg: #F9F9F9;      /* Off-white */
+            --text-dark: #333333;
+            --white: #ffffff;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* 2. Navigation */
+        header {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--primary-green); }
+
+        .btn-book {
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn-book:hover { background-color: #244636; }
+
+        /* 3. Hero Section */
+        .hero {
+            height: 100vh;
+            /* Placeholder image representing Siargao greenery */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('Zitas/cover.jpg'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background-color: var(--accent-gold);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            background-color: #c4a030;
+        }
+
+        /* 4. Sections General */
+        section {
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* 5. About Section */
+        .about {
+            background-color: var(--white);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 6. Grids (Used for Rooms and Tours) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .card-image {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-details { 
+            padding: 1.5rem; 
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-details h3 { margin-bottom: 0.5rem; color: var(--primary-green); }
+        .card-details p { flex-grow: 1; margin-bottom: 1rem; color: #555; }
+        
+        .price {
+            display: block;
+            margin-top: auto; /* Pushes price to bottom */
+            font-weight: bold;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+        }
+
+        /* Tour Specific Styles */
+        .tour-highlights {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        /* 7. Footer */
+        footer {
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .footer-content p { margin-bottom: 0.5rem; }
+        
+        .starlink-badge {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 5px 10px;
+            border: 1px solid var(--white);
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            nav ul { display: none; } /* Hidden on mobile for this demo */
+            .logo { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Zita's Garden</div>
+        <nav>
+            <ul>
+                <li><a href="#about">The Sanctuary</a></li>
+                <li><a href="#rooms">Stay</a></li>
+                <li><a href="#tours">Tours</a></li> <li><a href="#contact" class="btn-book">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Wake Up to the Sound of the Palms</h1>
+            <p>Your lush, tropical sanctuary in the heart of Siargao Island.</p>
+            <a href="#rooms" class="cta-button">Check Availability</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="section-title">
+            <h2>A Secret Garden in the Surfing Capital</h2>
+            <p>Come as a guest, leave as family.</p>
+        </div>
+        <p>
+            Nestled amidst swaying coconut trees and vibrant tropical flora, we built 
+            <strong>Zita's Garden</strong> to be more than just a place to sleep. 
+            It is a breath of fresh air. Whether you are here to catch the legendary barrels at Cloud 9 
+            or simply disconnect from the world, our gates are open.
+        </p>
+    </section>
+
+    <section id="rooms">
+        <div class="section-title">
+            <h2>Our Accommodations</h2>
+            <p>Simple comfort meets island living.</p>
+        </div>
+        
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2670&auto=format&fit=crop');"></div>
+                <div class="card-details">
+                    <h3>Garden Villa</h3>
+                    <p>A private detached villa surrounded by plants. Features a queen bed, private porch, and hot shower.</p>
+                    <span class="price">₱3,500 / night</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2670&auto=format&fit=crop');"></div>
+                <div class="card-details">
+                    <h3>The Loft</h3>
+                    <p>Perfect for couples or digital nomads. Spacious upper-floor room with a desk and fiber internet.</p>
+                    <span class="price">₱4,200 / night</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=2669&auto=format&fit=crop');"></div>
+                <div class="card-details">
+                    <h3>Bamboo Bungalow</h3>
+                    <p>Budget-friendly and authentic. Fan-cooled room with natural materials and shared garden access.</p>
+                    <span class="price">₱1,800 / night</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tours" style="background-color: #f2f5f4;">
+        <div class="section-title">
+            <h2>Experience Siargao</h2>
+            <p>Let us handle the itinerary while you enjoy the adventure.</p>
+        </div>
+
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1590076215667-874d4153a6ed?q=80&w=2535&auto=format&fit=crop');"></div>
+                <div class="card-details">
+                    <h3>Tri-Island Hopping</h3>
+                    <div class="tour-highlights">Guyam • Daku • Naked Island</div>
+                    <p>The classic Siargao experience. Swim in crystal clear waters and enjoy a boodle fight lunch on Daku Island.</p>
+                    <span class="price">₱1,500 / person</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1621523366836-8b019326d9c6?q=80&w=2574&auto=format&fit=crop');"></div>
+                <div class="card-details">
+                    <h3>Siargao Land Tour</h3>
+                    <div class="tour-highlights">Magpupungko Pools • Maasin River • Coconut Road</div>
+                    <p>Explore the heart of the island. Swing on the famous bent palm tree and dive into the rock pools.</p>
+                    <span class="price">₱2,000 / person</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?q=80&w=2574&auto=format&fit=crop');"></div>
+                <div class="card-details">
+                    <h3>Sohoton Cove Adventure</h3>
+                    <div class="tour-highlights">Jellyfish Sanctuary • Hagukan Cave</div>
+                    <p>A full-day boat trip to Bucas Grande. Swim with stingless jellyfish and explore the enchanting caves.</p>
+                    <span class="price">₱3,200 / person</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Zita's Garden</h3>
+            <p>Siargao Island, Surigao del Norte, Philippines</p>
+            <p>Email: stay@zitasgarden.com | Phone: +63 912 345 6789</p>
+            
+            <div class="starlink-badge">
+                ⚡ Powered by Starlink Internet
+            </div>
+            <br><br>
+            <p style="font-size: 0.8rem; opacity: 0.7;">&copy; 2025 Zita's Garden. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
